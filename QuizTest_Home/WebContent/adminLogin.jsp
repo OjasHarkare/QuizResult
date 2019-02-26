@@ -20,7 +20,8 @@
 
 </form>
 
- <form action = "admin_modifytest.jsp" method = "post">
+ <form action = "CheckforModify" method = "post">
+ Enter test ID to modify : <input type="text" name="modify_test_id">
 <input type="submit" value="Modify Test"></form>
 
 </body>

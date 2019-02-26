@@ -53,7 +53,7 @@ public class StartTest extends HttpServlet {
 					        PreparedStatement preparedStatement = null;
 		        ResultSet rs = null,resultset=null;	
 		        
-		        PreparedStatement pi=((java.sql.Connection) connection).prepareStatement("SELECT MAX(QID) FROM " +test_id);
+		        PreparedStatement pi=((java.sql.Connection) connection).prepareStatement("SELECT COUNT(QID) FROM " +test_id);
 		        resultset = pi.executeQuery();
 		        if (resultset.next())
 				Tot_ques = resultset.getInt(1);
