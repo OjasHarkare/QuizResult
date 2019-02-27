@@ -92,6 +92,41 @@ border: 2px solid #008CBA;
 </head>
 <body>
 <form name="form1" action="CalculateResult" method="post" target="_self">
+<script language ="javascript" >
+        var tim;
+       
+        var min = 1;
+        var sec = 0;
+        var f = new Date();
+        function f1() {
+            f2();
+            document.getElementById("starttime").innerHTML = "Your started your Exam at " + f.getHours() + ":" + f.getMinutes();
+             
+          
+        }
+        function f2() {
+            if (parseInt(sec) > 0) {
+                sec = parseInt(sec) - 1;
+                document.getElementById("showtime").innerHTML = "Your Left Time  is :"+min+" Minutes ," + sec+" Seconds";
+                tim = setTimeout("f2()", 1000);
+            }
+            else {
+                if (parseInt(sec) == 0) {
+                    min = parseInt(min) - 1;
+                    if (parseInt(min) < 0) {
+                        clearTimeout(tim);
+                        location.href = "submitresult.jsp";
+                    }
+                    else {
+                        sec = 60;
+                        document.getElementById("showtime").innerHTML = "Your Left Time  is :" + min + " Minutes ," + sec + " Seconds";
+                        tim = setTimeout("f2()", 1000);
+                    }
+                }
+               
+            }
+        }
+    </script>
 <% 				
 		        
                 int current = 0;
@@ -151,11 +186,18 @@ border: 2px solid #008CBA;
                 sess.setAttribute("count", count);
                 %>
 
-<p>
+
+<table>
+	 <tr>
+          <td>
+            <div id="starttime"></div><br />
+            <div id="endtime"></div><br />
+            <div id="showtime"></div>
+          </td></tr></table>
  				<input type="hidden" name="qid" value="<%=qid %>"/>
                <textarea name="question" cols="50" rows="5"  Readonly id="question" class="text text4"><%=num %>.<%=ques %>
                </textarea>
-            </p>
+          
                   <input type="hidden" name="corans" value="<%=ans %>"/>
                    
             <p>
