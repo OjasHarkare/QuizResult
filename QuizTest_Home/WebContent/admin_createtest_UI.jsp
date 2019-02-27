@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <style>
@@ -45,20 +45,12 @@ border: 2px solid #008CBA;
 
 </style>
 
-<meta charset="ISO-8859-1">
-<title>Add New Question</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Create Test</title>
 </head>
 <body>
-<%
-	HttpSession sess=request.getSession();
-	String test_id1 =(String)sess.getAttribute("modify_test_id");
-	sess.setAttribute("test_id", test_id1);
-	sess.setAttribute("jsp_page", "modify_add.jsp");
-	sess.setAttribute("exception_page", "admin_modifytest.jsp");
-	
-%>
 <center>
-<h1>Add Question</h1>
+<h1>Create Test</h1>
  <form action = "insert_ques" method = "post">
 <table>
 <tr>
@@ -75,8 +67,11 @@ border: 2px solid #008CBA;
 </table>
 <input type="Submit" value="Insert" name="insert_data"  class="button button4">
 </form>
- <form action = "admin_modifytest.jsp" method = "post">
-<br><input type="Submit" value="Submit" name="submit_data" class  = "button button4" ></form>
+ <form action = "adminLogin.jsp" method = "post">
+<br><input type="Submit" value="Submit" name="submit_data" class="button button4" >
+</form>
+
 </center>
+
 </body>
 </html>

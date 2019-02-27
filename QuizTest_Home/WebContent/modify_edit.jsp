@@ -3,16 +3,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+.button {
+  background-color: #008CBA; 
+  border: none;
+  color: white;
+  padding:  14px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);   
+}.button4 {border-radius: 12px;}
+.text5 {
+border: 2px solid #008CBA;
+    color: Black;
+  padding:  7px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: text;
+}.text5 {border-radius: 12px;}
+
+</style>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit Question</title>
 </head>
 <body>
-	<%
-%>
-	<form name="form1" action="modify_after_edit" method="post"
-		target="_self">
-
-		<% 				
+<% 				
 		        HttpSession sess=request.getSession();
 				String test_id1 =(String)sess.getAttribute("modify_test_id");
 				String modify_qid = (String)sess.getAttribute("modify_qid");
@@ -30,33 +52,7 @@
                sess.setAttribute("Tot_ques", Tot_ques);
                sess.setAttribute("test_id", test_id1);
                
-               /*  if (Integer.parseInt(modify_qid) < Tot_ques)
-                {
-                	for (int i = 0; i < Integer.parseInt(modify_qid) - 1; i++) 
-                	{	
-                	
-                    	itr.next();
-                    	itr.next();
-                    	itr.next();
-                    	itr.next();
-                    	itr.next();
-                    	itr.next();
-                    	itr.next();                     
-                   		num++;                    
-                	} 
-                	
-                }
-                else
-                {
-                	sess.setAttribute("count", count);
-                	 RequestDispatcher rd=request.getRequestDispatcher("modify_edit.jsp");
-                     if(rd !=null)
-                     {
-                         rd.forward(request, response);
-                     }
-                } */
-                
-                String qid=(String)itr.next(),
+                              String qid=(String)itr.next(),
                  		ques=(String)itr.next(),
                  		ans=(String)itr.next(),
                  		opt1=(String)itr.next(),
@@ -74,37 +70,30 @@
                 
                 sess.setAttribute("count", count);
                 %>
+<center>
+<h1>Edit Question</h1>
+	<form name="form1" action="modify_after_edit" method="post"	target="_self">
 
-		<p>
 			<input type="hidden" name="qid" value="<%=qid %>" />
-			<textarea name="question" cols="50" rows="5" Readonly id="question"><%=ques %>
-               </textarea>
-		</p>
-
-		<p>
-			A). <input type="text" name="option1" value=<%=opt1%>>
-		</p>
-		<p>
-			B). <input type="text" name="option2" value=<%=opt2%>>
-		</p>
-		<p>
-			C). <input type="text" name="option3" value=<%=opt3%>>
-		</p>
-		<p>
-			D). <input type="text" name="option4" value=<%=opt4%>>
-		</p>
-		
-		<p>
-			Ans.) <input type="text" name="corans" value="<%=ans %>" />
-		</p>
-		<BR />
-		<p>
-
+			
+			<table>
+<tr>
+<td>Question : <textarea name="question" cols="50" rows="5"  id="question" class="text5 text5"><%=ques %></textarea><br></td>
+</tr>
+<tr>
+<td>Option 1 : <input type="text" name="option1" class="text5 text5" value=<%=opt1%>></td>
+<td>Option 2 : <input type="text" name="option2" class="text5 text5" value=<%=opt2%>></td></tr>
+<tr>
+<td>Option 3 : <input type="text" name="option3" class="text5 text5" value=<%=opt3%>></td>
+<td>Option 4 : <input type="text" name="option4" class="text5 text5"  value=<%=opt4%>></td></tr>
+<tr>
+<td>Correct :  <input type="text" name="corans" class="text5 text5" value=<%=ans%>><td></tr>
+</table>
 			<input type="HIDDEN" name="hidden" value="<%=Integer.parseInt(modify_qid) %>" /> 
-			<INPUT TYPE="submit" VALUE="modify">
+			<INPUT TYPE="submit" VALUE="modify" class="button button4">
 
-		</p>
+		
 	</form>
-
+</center>
 </body>
 </html>

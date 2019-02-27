@@ -58,12 +58,12 @@ public class modify_after_edit extends HttpServlet {
         sess.setAttribute("test_id", test_id);
 		
 		String qid = (String)sess.getAttribute("qid");
-        String ques = (String)sess.getAttribute("ques");
+        /*String ques = (String)sess.getAttribute("ques");
         String ans = (String)sess.getAttribute("ans");
         String opt1 = (String)sess.getAttribute("opt1");
         String opt2 = (String)sess.getAttribute("opt2");
         String opt3 = (String)sess.getAttribute("opt3");
-        String opt4 = (String)sess.getAttribute("opt4");
+        String opt4 = (String)sess.getAttribute("opt4");*/
         
         
         String modify_ques = request.getParameter("question");
@@ -72,17 +72,10 @@ public class modify_after_edit extends HttpServlet {
         String modify_op3 = request.getParameter("option3");
         String modify_op4 = request.getParameter("option4");
         String modify_ans = request.getParameter("corans");
+        System.out.println(modify_op2+modify_op3+modify_op4+modify_ans);
+        
         System.out.println("Quest : "+modify_ques);
         
-       /* if(ques.equals(modify_ques) || ans.equals(modify_ans) || opt1.equals(opt1) || opt2.equals(opt2) || opt3.equals(opt3) || opt4.equals(opt4))
-        {
-        	RequestDispatcher rd = request.getRequestDispatcher("modify_edit.jsp");
-			if (rd != null) {
-				rd.forward(request, response);
-			}
-        }
-        else
-        {*/
         	try
         	{
         		Class.forName("oracle.jdbc.driver.OracleDriver");
