@@ -78,10 +78,10 @@ public class modify_before_edit extends HttpServlet {
 			if (resultset.next())
 				Tot_ques = resultset.getInt(1);
 			System.out.println(Tot_ques);
-			if (Tot_ques < Integer.parseInt(modify_qid)) {
+			/*if (Tot_ques < Integer.parseInt(modify_qid)) {
 				out.println("<meta http-equiv='refresh' content='3;URL=admin_modifytest.jsp'>");
 				out.println("<p style='color:red;'>Test ID Incorrect</p>");
-			} else {
+			} else {*/
 				preparedStatement = connection.prepareStatement("SELECT * FROM " + test_id + " WHERE QID = "+ modify_qid);
 				rs = preparedStatement.executeQuery();
 				while (rs.next()) {
@@ -109,7 +109,7 @@ public class modify_before_edit extends HttpServlet {
 				if (rd != null) {
 					rd.forward(request, response);
 				}
-			}
+			//}
 
 		} catch (Exception e2) {
 			System.out.println(e2);
